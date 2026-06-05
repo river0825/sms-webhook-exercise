@@ -17,3 +17,10 @@ Route::get('/ping', function () {
 
 // 電信商回報簡訊送達狀態的 webhook（外部 POST）。
 Route::post('/webhooks/sms-status', [SmsStatusWebhookController::class, 'handle']);
+
+// 給前端讀的簡單 API：列出訊息（React 前端會打這支）。
+Route::get('/api/messages', function () {
+    return \App\Models\Message::query()
+        ->orderByDesc('id')
+        ->get(['id', 'message_sid', 'to', 'body', 'status', 'updated_at']);
+});
