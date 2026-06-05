@@ -20,10 +20,9 @@
 ## 怎麼跑起來（一個指令）
 
 ```bash
-git clone <THIS_REPO_URL>
-cd step7-exercise
-cp .env.example .env   # 若 .env 已內附可略過
-docker compose up --build
+git clone https://github.com/river0825/sms-webhook-exercise.git
+cd sms-webhook-exercise
+docker compose up --build   # 會自動 cp .env.example .env
 ```
 
 第一次會先 build image、裝 composer 依賴、跑 migration + seed，然後啟動服務。
